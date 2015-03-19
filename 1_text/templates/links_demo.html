@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type=text/css href="{{url_for('static', filename='adding_css.css') }}"/>
+    <title>Flask Text Portfolio</title>
+</head>
+<body>
+    <div id="content"></div>
+    <div id="footer">
+        Linking warrants more explanation. The standard way to declare a URL route is through the route decorator, which is used throughout this demo. However I've discovered 2 other ways to link, and I'd like to practice them here.<br></br>
+        <li>Creating a function for a page, as usual, and then calling the add_url_rule function on the app object, and passing in the URL rule and the view function. <a href="{{url_for('not_decorator')}}">Check it out</a></li>
+        <li>Redirects can be achieved by returning another view function via the redirect function. <a href="{{url_for('redirect_demo')}}">Check it out<a/></li>
+    </div>
+</body>
+</html>

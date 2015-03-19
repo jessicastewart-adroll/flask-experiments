@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type=text/css href="{{url_for('static', filename='adding_css.css') }}"/>
+    <title>Flask Text Portfolio</title>
+</head>
+<body>
+    <div id="content"></div>
+    <div id="footer">
+        Here is some simple CSS that adds a grey background and sans-serif font. 
+        <br></br>
+        <h2>In order to add CSS to our HTML template</h2>
+            <li>Pull in the CSS with the HTML href feature</li>
+            <li>Use the Jinja2 curly braces in order to call the url_for Python function</li>
+            <li>Pass arguments to the URL function: the 'static' folder is the end point and enumerate filename=<filename></li>
+        <br></br>
+        <a href="{{url_for('links_demo')}}">Next demo: links</a>
+    </div>
+</body>
+</html>

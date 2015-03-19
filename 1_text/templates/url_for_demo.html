@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css" />
+    <title>Flask Text Portfolio</title>
+</head>
+<body>
+    <div id="content"></div>
+    <div id="footer">
+        How do we hyperlink such that our own Flask page is returned? We use the Flask function url_for(). Because this function is considered a 'Python experssion' it must be wrapped in double curly braces in order to be compiled as Python. Try clicking on this 'url for' the <a href="{{url_for('css_demo')}}">css page</a>.<br></br>
+        <li>The route decorator takes the 'rule' argument which is simply the URL that will display</li>
+        <li>The url_for function takes the 'endpoint' argument which is the name of the function that will return the page content.</li>
+
+        <ul>view function/endpoint = function that returns page content</ul>
+        <ul>route/rule = display string appended to URL</ul>
+
+    </div>
+</body>
+</html>
