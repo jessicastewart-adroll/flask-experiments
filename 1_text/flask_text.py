@@ -1,3 +1,5 @@
+#distinguishing between routes, endpoints, rules, etc (Flask features to navigate between views)
+
 from flask import Flask, render_template, redirect, url_for
 
 flask_text_app = Flask(__name__)
