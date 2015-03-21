@@ -1,3 +1,5 @@
+#reading from a data source and displaying in different ways with Python manipulations on each route 
+
 import string
 from flask import Flask
 
