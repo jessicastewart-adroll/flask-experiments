@@ -1,3 +1,5 @@
+#use sqlite3 module to create database, table and insert data from txt file
+
 import sqlite3
 
 def entry_creator(chunk):
