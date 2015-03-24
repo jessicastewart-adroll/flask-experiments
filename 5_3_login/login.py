@@ -1,5 +1,10 @@
 #user auth that layers on token auth for a resource page 
 #uses the itsdangerous module to generate and verify the token (token has 'timed' features so I set it to expire after a day)
+#note: token does not need to be stored server-side
+	#rather than being random characters, token encrypts username/password
+	#token is decrypted through 'loading'
+
+(unpack user info by 'loading' the token)
 
 from flask import Flask, render_template, request
 from werkzeug import check_password_hash
