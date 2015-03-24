@@ -1,3 +1,6 @@
+#user auth that layers on token auth for a resource page 
+#uses the itsdangerous module to generate and verify the token (token has 'timed' features so I set it to expire after a day)
+
 from flask import Flask, render_template, request
 from werkzeug import check_password_hash
 from itsdangerous import URLSafeTimedSerializer, BadSignature, SignatureExpired
@@ -8,12 +11,14 @@ serializer = URLSafeTimedSerializer('top_secret')
 
 @app.route('/token', methods=['GET','POST'])
 def request_token():
+	#makes all inputs bytestrings on the way in for consistency (come in as Unicode)
 	if request.method == 'POST':
 		un = str(request.form['username'])
 		pw = str(request.form['password'])
 		conn = sqlite3.connect('security.db')
 		cur = conn.cursor()
 		hashed = str(cur.execute("SELECT password FROM users WHERE username=?", (un,)).fetchone()[0])
+		#note: that SQLite requires all Python variables subbed into SQL statements as tuples
 		if check_password_hash(hashed, pw):
 			return URLSafeTimedSerializer('top_secret').dumps([un, pw])
 		else:
