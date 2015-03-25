@@ -4,7 +4,7 @@
 	#rather than being random characters, token encrypts username/password
 	#token is decrypted through 'loading'
 
-(unpack user info by 'loading' the token)
+#unpack user info by 'loading' the token
 
 from flask import Flask, render_template, request
 from werkzeug import check_password_hash
