@@ -1,0 +1,15 @@
+<html>
+	<body>
+	Please login to generate token
+	<br>
+	<br>
+	<form action='/token' method='post'>
+	Username: <input name='username'>
+	Password: <input type='password' name='password'>
+	<input type='submit' value="Get token">
+	<!-- fake fields are a workaround for chrome autofill getting the wrong fields -->
+	<input style="display:none" type="text" name="fakeusernameremembered"/>
+	<input style="display:none" type="password" name="fakepasswordremembered"/>
+	</form>
+	</body>
+</html>
