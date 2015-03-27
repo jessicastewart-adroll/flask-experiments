@@ -59,8 +59,6 @@ class TestResource(unittest.TestCase):
 	def test_expired_token(self):
 		rv = self.test_app.get('/resource?tokening=WyJhZGFtIiwiYXBwbGUiXQ.B_MBMg.fSh7ZdTxdMyHaPTb-6fNnHqZeFQ').data
 		self.assertTrue('Token expired')
-		
-#acceptance test
 
 if __name__ == '__main__':
 	unittest.main()
