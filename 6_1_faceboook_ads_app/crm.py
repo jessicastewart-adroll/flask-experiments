@@ -1,4 +1,4 @@
-#connect with Facebook ads API to add hashed emails to an existing CustomAudience 
+#connect with Facebook ads API to add hashed emails to an existing CustomAudience and get data for CustomAudience
 
 import requests
 import json
@@ -8,7 +8,7 @@ from flask import Flask, request, render_template
 app = Flask(__name__)
 
 with open('token.txt', 'r') as f:
-	token = f.read() #read token from local file for security
+	token = f.read().strip("\'\"") #read token from local file for security
 
 def file_validation(filename):
 	return len(filename.split('.')) > 0
