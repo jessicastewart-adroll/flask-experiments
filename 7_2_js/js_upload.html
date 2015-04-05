@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<title>Facebook CRM helper</title>
+<h1>Upload CSV with hashed emails</h1>
+<form action="" method=post enctype=multipart/form-data>
+<input type=file name=file>
+<br>
+<br>
+
+<button id="toggle_demo" onclick="changeDisplay('audID')" class="link">Audience ID</button> <!--call function in html element and insert what needs to be displayed (audID in the p element)-->
+
+<p id="audID" style="display: none">Create CRM segment through AdRoll dash and get CustomAudience Facebook ID from backstage
+</p>
+<input type=text name="custom_audience_id">
+<br>
+<br>
+<input type=submit value=Submit>
+</form>
+<script>
+document.getElementById("toggle_demo").addEventListener("click", function(event) {
+	event.preventDefault() //turning off default click behavior for button element
+});
+
+function changeDisplay(obj) {
+	var thing = document.getElementById(obj); //function to switch display setting for element
+	if (thing.style.display == 'none') {
+		thing.style.display = 'block';
+	} else {
+		thing.style.display = 'none';
+	}
+}
+</script>
+</body>
+</html>
