@@ -1,4 +1,5 @@
-#connect with Facebook ads API to add hashed emails to an existing CustomAudience and get data for CustomAudience
+#connect with Facebook ads API to add hashed emails to an existing CustomAudience
+#return view of data from Facebook API and this services db
 
 import requests
 import json
