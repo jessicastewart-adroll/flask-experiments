@@ -20,5 +20,5 @@ def hello():
 	return "Hello wordl"
 
 if __name__ == "__main__":
-	port = int(os.environ.get("PORT", 5000))  # port 5000 only works in development, instead get PORT environ var
-	app.run(host='0.0.0.0', port=port)
+	port = int(os.environ.get("PORT", 5000))  # port 5000 only works in development, instead get PORT environ var or will return Application Error
+	app.run(host='0.0.0.0', port=port) #adding debug=True will put on https
