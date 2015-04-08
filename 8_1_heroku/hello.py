@@ -10,6 +10,12 @@
 
 # http://test-8-1.herokuapp.com/
 
+# Interestingly Gunicorn isn't needed here. Gunicorn is an additional tool that can be used
+# with the Procfile for "parallelism" -- achieved by creating multiple copies of the app (workers)
+# on the Gunicorn proxy server. The proxy server allows multiple copies of the app to exist and run
+# in parallel (amazing!). Now the total number of requests to the server are divided between the
+# workers rather than a single server.
+
 import os
 from flask import Flask
 
