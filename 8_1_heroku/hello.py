@@ -1,12 +1,12 @@
-# make app directory
-# make virtualenv (so pip freeze is contained)
-# activate virtualenv
-# make app.py
-# make requirements.txt
+# make flask app directory
+# make virtualenv, otherwise pip freeze will get all packages in global which will slow down server, venv ensures only needed dependencies added
+# activate virtualenv, add all needed packages 
+# make requirements.txt, put dependencies in requirements file
+# make flask app file (app.py)
 # make Procfile
-# git init (so web app is contained), add (not venv), commit
-# heroku create, rename, push
-# add dyno
+# git init, create .gitignore file and add virtualenv file, add commit -- creating isolated repo will make commits to heroku easier
+# heroku create, rename, push -- creates server that can push to just like git 
+# add dyno 
 
 # http://test-8-1.herokuapp.com/
 
