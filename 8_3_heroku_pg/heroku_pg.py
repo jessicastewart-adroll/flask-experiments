@@ -15,27 +15,28 @@ urlparse.uses_netloc.append("postgres")
 db_url = urlparse.urlparse(os.environ["DATABASE_URL"])
 
 '''
-export DATABASE_URL=postgres://ndbylcxtqynjkd:kIl5KPeEsIUUW6jToLvlNlskQz@ec2-54-163-226-9.compute-1.amazonaws.com:5432/de2urgt1pem334
+to get DATABASE_URL in os evironment:
+*export DATABASE_URL=<database address>
+*e.g. postgres://ndbylcxtqynjkd:kIl5KPeEsIUUW6jToLvlNlskQz@ec2-54-163-226-9.compute-1.amazonaws.com:5432/de2urgt1pem334
 
-cur.execute("CREATE TABLE crm_uploads(id serial primary key, custom_audience_id bigint,filename text, upload_timestamp timestamp default current_timestamp, file_count bigint,fb_num_received bigint, fb_num_invalid_entries bigint, fb_invalid_entry_samples text)")
+CREATE TABLE:
+**error 'relation does not exist' > table hasn't been created 
+**error 'commands ignored until end of transaction' > an execution failed so it needs to be rolled back
+	**the rollback function is annoying because in my mind if it failed there should just be an error not an additional error on subsequent executions
+	**transaction is defined as an execution 
+	**rollback cancels everything since last commit
+	**so if we create, insert, then insert fails then rollback, the create table execution has been rolled back so we don't have a table 
+*comma separated <name> <type> 
+*serial attribut autoincrements 
+*default attribut sets default value e.g. timestamp type can have current_timestamp default
+*integer column type has short byte limit so changed to big int
 
-cur.execute("""INSERT INTO crm_uploads(custom_audience_id, filename, file_count, fb_num_received, fb_num_invalid_entries, fb_invalid_entry_samples) VALUES (6023013051991, 'test.csv', 54321, 54321, 12, '[]')""")
-
-c2 = cur.execute("CREATE TABLE crm_uploads2(id serial primary key, custom_audience_id bigint)")
-i1 = cur.execute("INSERT INTO crm_uploads2(custom_audience_id) VALUES (6023013051991)")
-i2 = cur.execute("INSERT INTO crm_uploads2 VALUES (6023013051991)") #will insert as ID
-integer out of range > make big int
-relation does not exist > table wasnt created 
-commands ignored until end of transaction block > rollback failed attempt
-
-c3 = cur.execute("CREATE TABLE crm_uploads3(id serial primary key, custom_audience_id bigint, filename text)")
-i3 = cur.execute("INSERT INTO crm_uploads3(custom_audience_id, filename) VALUES (6023013051991, 'text.csv')") #words 
-i4 = cur.execute("INSERT INTO crm_uploads(custom_audience_id, filename) VALUES (6023013051991, \'text.csv\')")
-
-c4 = cur.execute("CREATE TABLE crm_uploads(id serial primary key, custom_audience_id integer,filename text, upload_timestamp timestamp default current_timestamp")
-i5 = cur.execute("INSERT INTO crm_uploads(custom_audience_id, filename) VALUES (6023013051991, 'text.csv')")
+INSERT INTO:
+*triple quoting the insert string reduces need to escape other quotes needed
+	**error 'integer out of range'
+*text column type values must be in quotes
+*enumerate column names that correspond with values when not all are provided (setting column type to default may prevent this but I would specify for absolute clarity)
 '''
-#must successfully add row to created table then commit (mistakes require rollback and starting from beginning)
 
 with open('token.txt', 'r') as f:
 	token = f.read().strip("\'\"") #read token from local file for security
@@ -134,4 +135,4 @@ if __name__ == '__main__':
 
 #github version 
 #InePlatformWarning
-#/Users/jessicastewart/projects/crm_helper_app/crm_venv/lib/python2.7/site-packages/requests/packages/urllib3/util/ssl_.py:79: InsecurePlatformWarning: A true SSLContext object is not available. This prevents urllib3 from configuring SSL appropriately and may cause certain SSL connections to fail. For more information, see https://urllib3.readthedocs.org/en/latest/security.htm
+#/Users/jessicastewart/projects/crm_helper_app/crm_venv/lib/python2.7/site-packages/requests/packages/urllib3/util/ssl_.py:79: InsecurePlatformWarning: A true SSLContext object is not available. This prevents urllib3 from configuring SSL appropriately and may cause certain SSL connections to fail. For more information, see https://urllib3.readthedocs.org/en/latest/security.html
