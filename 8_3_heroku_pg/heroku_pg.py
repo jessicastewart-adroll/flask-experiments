@@ -1,6 +1,8 @@
 #connect with Facebook ads API to add hashed emails to an existing CustomAudience
 #return view of data from Facebook API and this services db
 
+#InsecurePlatformWarning due to no SSL, have to pay for SSL endpoint in Heroku
+
 import requests
 import json
 import os
