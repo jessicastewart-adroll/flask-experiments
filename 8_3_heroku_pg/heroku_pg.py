@@ -134,7 +134,3 @@ def get_custom_audience_data(custom_audience_id):
 if __name__ == '__main__':
 	port = int(os.environ.get("PORT", 5000))
 	app.run(host='0.0.0.0', port=port)
-
-#github version 
-#InePlatformWarning
-#/Users/jessicastewart/projects/crm_helper_app/crm_venv/lib/python2.7/site-packages/requests/packages/urllib3/util/ssl_.py:79: InsecurePlatformWarning: A true SSLContext object is not available. This prevents urllib3 from configuring SSL appropriately and may cause certain SSL connections to fail. For more information, see https://urllib3.readthedocs.org/en/latest/security.html
