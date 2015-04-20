@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<head>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<title>CRM Data</title>
+</head>
+<body>
+<h1>Data for audience {{custom_audience_id}}</h1>
+<h2>From Facebook API</h2>
+<ul>
+{% for outer_key, outer_value in fb_data.iteritems() %}
+	{% if outer_value is not mapping %}
+		<li>{{ outer_key }} = {{ outer_value }}</li>
+	{% else %}
+		<li>{{ outer_key }}
+			<ul>
+			{% for inner_key, inner_value in outer_value.iteritems() %}
+				<li>{{ inner_key }} = {{ inner_value }}</li>
+			{% endfor %}
+			</ul>	
+	{% endif %}
+		</li>
+{% endfor %}
+</ul>
+<br>
+<h2>From upload history</h2>
+<table style="width:100%">
+	<tr>
+		<th>ID</th>
+		<th>Custom Audience ID</th>
+		<th>Filename</th>
+		<th>Upload Time</th>
+		<th>File Count</th>
+		<th>Facebook Number Received</th>
+		<th>Facebook Number Invalid Entries</th>
+		<th>Facebook Invalid Entry Samples</th>
+	</tr>
+	{% for row in db_data %}
+	<tr>
+		{% for item in row %}
+		<td>{{ item }}</td>
+		{% endfor %}
+	</tr>
+	{% endfor %}
+</table>
+</body>
+</html>
