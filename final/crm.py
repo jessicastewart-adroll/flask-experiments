@@ -2,6 +2,8 @@
 Connect with Facebook ads API to add hashed emails to an existing CustomAudience. 
 
 Return view of data from Facebook API and this services db.
+
+http://crm-helper-app.herokuapp.com/
 """
 
 import requests
