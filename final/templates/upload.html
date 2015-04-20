@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<script src='/static/validate_form.js'></script>
+</head>
+
+<body>
+<title>Facebook CRM helper</title>
+<h1>Upload CSV with hashed emails</h1>
+<br>
+<form name="crmForm" action="" method=post enctype=multipart/form-data onsubmit="return formValidator()">
+<input id="crmFile" type=file name="file">
+CRM audience ID
+<input type=text name="custom_audience_id">
+<input type=submit value=Submit>
+</form>
+
+</body>
+</html>
