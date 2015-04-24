@@ -1,7 +1,7 @@
 function formValidator() {
 	var f = document.getElementById("crmFile").value;
 	if (f == null || f == '') {
-		alert("Must attach file");
+		alert("Must attach file");  
 		return false;
 	}
 	var i = document.forms["crmForm"]["custom_audience_id"].value;
@@ -10,3 +10,6 @@ function formValidator() {
 		return false;
 	}	
 }
+
+// TODO Check file type
+// TODO AJAX progress bar
