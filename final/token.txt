@@ -1,1 +1,3 @@
 # input token
+
+# TODO: move to elastic beanstalk so token within AdRoll service
