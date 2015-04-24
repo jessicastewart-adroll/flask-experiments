@@ -23,7 +23,7 @@ with open('token.txt', 'r') as f:
 	token = f.read().strip("\'\"")  # read token from local file for security
 
 def file_validation(filename):
-	return len(filename.split('.')) > 0
+	return len(filename.split('.')) > 0  # TODO file validation that checks file type should move to client (Javascript)
 
 def cleaner(raw_data):
 	return [hash.strip('", ').lower() for hash in raw_data if hash and len(hash)>20]
@@ -32,6 +32,7 @@ def batcher(data):
 	return [data[num:num+10000] for num in range(0,len(data)-1,10000)]  # batch email hashes into lists of 10k
 
 def create_api_request(hash_batch,custom_audience_id):
+	'''Attempted with Python SDK but this API endpoint returned a generic error'''
 	internal_payload = {}
 	internal_payload["data"] = hash_batch
 	internal_payload["schema"] = "EMAIL_SHA256"
@@ -52,7 +53,7 @@ def upload_file():
 	if request.method == 'POST':
 		uploaded_file = request.files['file']
 		filename = uploaded_file.filename
-		if file_validation(filename):  # TODO move validation to js
+		if file_validation(filename):
 			custom_audience_id = request.form['custom_audience_id']
 			raw_data = uploaded_file.read().split('\r\n')
 			data = cleaner(raw_data)
@@ -70,6 +71,7 @@ def upload_file():
 				if facebook_response['invalid_entry_samples']:
 					fb_invalid_entry_samples.append(facebook_response['invalid_entry_samples'])
 
+			# TODO move data model to SQLAlchemy objects 
 			conn = psycopg2.connect("dbname={} user={} password={} host={} ".format(db_url.path[1:], db_url.username, db_url.password, db_url.hostname))
 			cur = conn.cursor()
 
